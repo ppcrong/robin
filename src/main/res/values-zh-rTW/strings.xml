@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Robin</string>
+    <string name="email_hint">電子郵件 (必填)</string>
+    <string name="password_hint">密碼 (必填)</string>
+    <string name="signin">登入</string>
+    <string name="signup_link">還沒有帳號? 註冊</string>
+    <string name="forgot_password">忘記密碼</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_name">名稱</string>
+    <string name="confirm_password">確認密碼 (必填)</string>
+    <string name="sign_up">註冊</string>
+    <string name="signin_link">已經有帳號了? 登入</string>
+    <string name="reset_password">重設密碼</string>
+    <string name="remember_password">記得您的密碼? 登入</string>
+    <string name="complete_must_info">請完成必填欄位</string>
+</resources>

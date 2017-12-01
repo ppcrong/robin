@@ -72,7 +72,7 @@ public class SignupFragment extends Fragment {
                 if (fieldsFilled()) {
                     ((RobinActivity) getActivity()).onSignup(name.getText().toString(), email.getText().toString(), password.getText().toString());
                 } else {
-                    Toast.makeText(getActivity().getApplicationContext(), "Some information is missing.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity().getApplicationContext(), getString(R.string.complete_must_info), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -154,7 +154,7 @@ public class SignupFragment extends Fragment {
     }
 
     private boolean fieldsFilled() {
-        return (!(name.getText().toString().isEmpty() || email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) && (password.getText().toString().equals(confirmPassword.getText().toString())));
+        return (!(email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) && (password.getText().toString().equals(confirmPassword.getText().toString())));
     }
 
     private void setDefaults() {
