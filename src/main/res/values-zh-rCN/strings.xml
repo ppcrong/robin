@@ -15,4 +15,5 @@
     <string name="reset_password">重设密码</string>
     <string name="remember_password">记得您的密码? 登入</string>
     <string name="complete_must_info">请完成必填栏位</string>
+    <string name="email_format_is_invalid">电子邮件格式错误</string>
 </resources>

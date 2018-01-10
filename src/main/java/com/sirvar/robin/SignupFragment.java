@@ -22,6 +22,7 @@ public class SignupFragment extends Fragment {
     private TextView login;
     private ImageView logo;
     private EditText name;
+    private TextInputLayout wrapper_email;
     private EditText email;
     private EditText password;
     private EditText confirmPassword;
@@ -50,6 +51,7 @@ public class SignupFragment extends Fragment {
         login = (TextView) view.findViewById(R.id.login);
         logo = (ImageView) view.findViewById(R.id.logo);
         name = (EditText) view.findViewById(R.id.name);
+        wrapper_email = view.findViewById(R.id.wrapper_email);
         email = (EditText) view.findViewById(R.id.email);
         password = (EditText) view.findViewById(R.id.password);
         confirmPassword = (EditText) view.findViewById(R.id.confirm_password);
@@ -70,7 +72,11 @@ public class SignupFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (fieldsFilled()) {
-                    ((RobinActivity) getActivity()).onSignup(name.getText().toString(), email.getText().toString(), password.getText().toString());
+                    if (isValidEmailAddress(email.getText().toString())) {
+                        ((RobinActivity) getActivity()).onSignup(name.getText().toString(), email.getText().toString(), password.getText().toString());
+                    } else {
+                        wrapper_email.setError(getString(R.string.email_format_is_invalid));
+                    }
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(), getString(R.string.complete_must_info), Toast.LENGTH_SHORT).show();
                 }
@@ -155,6 +161,13 @@ public class SignupFragment extends Fragment {
 
     private boolean fieldsFilled() {
         return (!(email.getText().toString().isEmpty() || password.getText().toString().isEmpty()) && (password.getText().toString().equals(confirmPassword.getText().toString())));
+    }
+
+    private boolean isValidEmailAddress(String email) {
+        String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+        java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+        java.util.regex.Matcher m = p.matcher(email);
+        return m.matches();
     }
 
     private void setDefaults() {
